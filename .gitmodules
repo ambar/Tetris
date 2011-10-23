@@ -1,0 +1,3 @@
+[submodule "js/seajs"]
+	path = js/seajs
+	url = https://github.com/seajs/seajs.git
