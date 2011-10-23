@@ -3,7 +3,7 @@
 # 俄罗斯方块
 
 ## 截图
-![preview.png](preview.png)
+![preview.png](./preview.png)
 
 ## 起源
 
@@ -12,7 +12,7 @@
 
 ## 所得
 
-见 [NOTE.md](NOTE.md) 总结
+见 [NOTE.md](./NOTE.md) 总结
 
 ## 使用
 
