@@ -14,6 +14,24 @@
 
 见 [NOTE.md](https://github.com/ambar/Tetris/blob/master/NOTE.md) 总结
 
+游戏代码用 AMD 方式组织，加载器挑选了国人写的 [seajs](https://github.com/seajs/seajs)。
+
+## 发布
+
+使用 [spm](https://github.com/seajs/spm):
+
+```
+spm build game.js --combine
+```
+
+所有模块文件将打包到一个文件——这里默认位置是‘__build/game.js’。
+
+然后用 AMD 加载器加载它，游戏就成功运行了。比如 seajs 的方式：
+
+```
+<script src="js/sea.js" data-main="__build/game.js"></script>
+```
+
 ## 使用
 
 ```
@@ -27,6 +45,6 @@ TetrisGame.showGrid = true;
 TetrisGame.theme = 'classic';
 
 // canvas,列数，行数，缩放
-TetrisGame.init('#snake-game',10,20,1);
-// TetrisGame.init('#snake-game',10,20,.5);
+TetrisGame.game('#snake-game',10,20,1);
+// TetrisGame.game('#snake-game',10,20,.5);
 ```
