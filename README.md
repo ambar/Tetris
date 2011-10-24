@@ -2,6 +2,9 @@
 
 # 俄罗斯方块
 
+## 试玩
+[Demo](http://ambar.github.com/Tetris/)
+
 ## 截图
 ![preview.png](https://github.com/ambar/Tetris/raw/master/preview.png)
 
