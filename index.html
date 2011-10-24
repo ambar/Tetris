@@ -6,6 +6,7 @@
   <title>ambar/Tetris @ GitHub</title>
 
   <style type="text/css">
+    /*github style*/
     body {
       margin-top: 1.0em;
       background-color: #f9f5ea;
@@ -27,6 +28,30 @@
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+
+    /*game layout styles*/
+    #snake-game-wrapper{
+      margin:0 1em 0;padding:0 1em 0;overflow:hidden;
+      font: 62.5% Monaco,Consolas;background-color: #f9f5ea;
+    }
+      #snake-game{
+        background-color:transparent;
+      }
+      #snake-game-bg{
+        background-color:rgba(39, 32, 37, 1);
+      }
+
+      #snake-game-wrapper *{margin: 0;padding: 0;}
+      #snake-game-wrapper .panel{
+        float:left;margin:.5em 1em;width:150px;
+        font-size:1.2em;color:#333;       
+      }
+        #snake-game-wrapper .panel p{margin:0 0 1em;}
+        #snake-game-wrapper .panel li{padding:0;list-style:none;}
+        #snake-game-wrapper .panel em{font-weight:bold;}
+
+      #snake-game-wrapper .canvas{position: relative;float:left;}
+        #snake-game-wrapper .canvas canvas{position: absolute;top:0;left:0;}
   </style>
 </head>
 
@@ -35,25 +60,40 @@
 
   <div id="container">
 
-    <div class="download">
-      <a href="http://github.com/ambar/Tetris/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/ambar/Tetris/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
+<div id="snake-game-wrapper">
+  
+  <section class="canvas">
+    <canvas id="snake-game-bg"></canvas>
+    <canvas id="snake-game">
+      <p>您的浏览器太古老了。试试: <a href="http://www.google.com/chrome">Chrome</a></p>
+      <p><a href="http://windows.microsoft.com/zh-CN/internet-explorer/products/ie/home">IE 9</a></p>
+    </canvas>
+  </section>
 
-    <h1><a href="http://github.com/ambar/Tetris">Tetris</a>
-      <span class="small">by <a href="http://github.com/ambar">ambar</a></span></h1>
-
-    <div class="description">
-      Canvas Game 我的第三个动画游戏
+  <section class="panel">
+    <div class="preview">
+      <p>下一个</p>
+      <canvas id="snake-game-next" width="500" height="500"></canvas>
     </div>
+    <p><strong>方向键移动</strong></p>
+    <ul>
+      <li><em>P</em> 键 暂停/继续</li>
+      <li><em>R</em> 键 重新开始</li>
+      <li><em>D</em> 键 显示网格</li>
+      <li><em>C</em> 键 切换主题</li>
+      <li><del><em>A</em> 键 高级模式</del></li>
+    </ul>
+    <br>
+    <p>得分 ：<span id="tetris-score">0</span></p>
+    <p>level  ：<span id="tetris-level">0</span></p>
+    <!-- <p>fps ：<span id="tetris-fps">0</span></p> -->
+    
+  </section>
+
+</div>
 
     <h2>Authors</h2>
-<p>ambar (ambar.lee@gmail.com)<br/>      </p>
-<h2>Contact</h2>
-<p>长天之云 (ambar.lee@gmail.com)<br/>      </p>
-
+    <p>ambar (ambar.lee@gmail.com)</p>
 
     <h2>Download</h2>
     <p>
@@ -72,6 +112,7 @@
 
   </div>
 
-  
+<!--all in one-->
+<script src="js/sea.js" data-main="__build/game.js"></script>  
 </body>
 </html>
