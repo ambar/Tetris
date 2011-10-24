@@ -1,8 +1,8 @@
 define(function(require, exports, module) {
 
-var rand = require('../wo/wo').rand;
-var V = require('../wo/vector');
-var HSLColor = require('./hslcolor');
+var rand      = require('../wo/wo').rand;
+var V         = require('../wo/vector');
+var HSLColor  = require('./hslcolor');
 var BrickType = require('./bricktypes');
 
 var default_color = new HSLColor(180,0,.47);

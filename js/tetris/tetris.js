@@ -5,22 +5,22 @@ define(function(require, exports, module) {
 
 // requires lib objects
 var wo = require('../wo/wo'),
-	input = require('../wo/input'),
-	stage = require('../wo/stage'),
-	V = require('../wo/vector'),
-	Color = require('../wo/color').Color,
+	input        = require('../wo/input'),
+	stage        = require('../wo/stage'),
+	V            = require('../wo/vector'),
+	Color        = require('../wo/color').Color,
 	EventEmitter = require('../wo/events').EventEmitter,
-	entities = require('../wo/entities');
+	entities     = require('../wo/entities');
 
-var $ = wo.$query
+var $       = wo.$query
 var pressed = input.letterFromKeyCode;
-var Entity = entities.Entity,GameText = entities.GameText;
+var Entity  = entities.Entity,GameText = entities.GameText;
 
 // require game objects
-var Brick = require('./brick');
-var TetrisWall = require('./wall');
+var Brick       = require('./brick');
+var TetrisWall  = require('./wall');
 var brickDrawer = require('./brickdrawer');
-var bg = require('./background');
+var bg          = require('./background');
 
 var host = this, win = host, doc = host.document;
 var $score, $fps, $level;
@@ -28,22 +28,23 @@ var $score, $fps, $level;
 // private props
 var w, h; // 宽、高
 var unit = 40, // 网络单位长度，
-	scale = 1, // 画布缩放比例
-	fps = 12, // 初始帧数
-	fps_curr = 12, //
-	lvl_curr = 0, // 
+	scale        = 1, // 画布缩放比例
+	fps          = 12, // 初始帧数
+	fps_curr     = 12, //
+	lvl_curr     = 0, // 
 	lvl_up_score = 8000, // 
-	arrow_keys = [37,38,39,40], // 方向键，禁止默认卷屏
-	max_unit_x, // 横向最大单位
-	max_unit_y, // 纵向最大单位
-	game_lose = false,
+	score        = 0, //
+	arrow_keys   = [37,38,39,40], // 方向键，禁止默认卷屏
+	max_unit_x   = 0, // 横向最大单位
+	max_unit_y   = 0, // 纵向最大单位
+	game_lose    = false,
 	game_started = false, 
-	show_grid = true, // 显示网格
-	wall = null, // 墙面地图
-	grid = null, // 背景网格
-	paused_text = null, // 暂停显示文本
-	bg_ctx = null, // 背景画布
-	next_ctx = null; // 预览‘下一个’画布
+	show_grid    = true, // 显示网格
+	wall         = null, // 墙面地图
+	grid         = null, // 背景网格
+	paused_text  = null, // 暂停显示文本
+	bg_ctx       = null, // 背景画布
+	next_ctx     = null; // 预览‘下一个’画布
 
 var unit_in_px = function(pixel) {
 	return Math.ceil( pixel / unit )
@@ -67,11 +68,11 @@ var game_init = function (canvas,cols,rows,scale) {
 	max_unit_x = unit_in_px(w);
 	max_unit_y = unit_in_px(h);
 
-	$fps = $('#tetris-fps')
+	$fps   = $('#tetris-fps')
 	$score = $('#tetris-score')
 	$level = $('#tetris-level')
 
-	bg_ctx = $('#snake-game-bg').getContext('2d')
+	bg_ctx   = $('#snake-game-bg').getContext('2d')
 	next_ctx = $('#snake-game-next').getContext('2d')
 
 	bg_ctx.canvas.parentNode.style.width  = stage.width * scale + 'px';
@@ -196,8 +197,8 @@ var game_restart = function() {
 }
 var reset_state = function() {
 	$score.text(score = 0);
-	lvl_curr = 0;
-	fps_curr = stage.fps = fps;
+	lvl_curr  = 0;
+	fps_curr  = stage.fps = fps;
 	game_lose = game_started = false;
 	Brick.resetInstances();	
 }

@@ -4,11 +4,11 @@
 */
 define(function(require, exports, module) {
 
-var wo = require('../wo/wo');
-var stage = require('../wo/stage');
+var wo     = require('../wo/wo');
+var stage  = require('../wo/stage');
 var Entity = require('../wo/entities').Entity;
 
-var Brick = require('./brick');
+var Brick  = require('./brick');
 var drawer = require('./brickdrawer');
 
 var TetrisWall = Entity.extend({

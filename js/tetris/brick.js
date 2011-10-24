@@ -1,14 +1,14 @@
 define(function(require, exports, module) {
 
 var wo = require('../wo/wo'),
-	input = require('../wo/input'),
-	stage = require('../wo/stage'),
-	V = require('../wo/vector'),
+	input  = require('../wo/input'),
+	stage  = require('../wo/stage'),
+	V      = require('../wo/vector'),
 	Entity = require('../wo/entities').Entity;
 
 var BrickType = require('./bricktypes');
-var drawer = require('./brickdrawer');
-var util = require('./util');
+var drawer    = require('./brickdrawer');
+var util      = require('./util');
 
 /*var EMPTY = 0;*/
 

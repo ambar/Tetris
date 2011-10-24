@@ -6,7 +6,7 @@
 */
 define(function(require, exports, module) {
 
-var wo = require('../wo/wo');
+var wo    = require('../wo/wo');
 var Color = require('../wo/color').Color;
 
 function HSLColor(ary) {
