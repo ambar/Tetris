@@ -22,7 +22,7 @@ function Vector(ary) {
 		})
 	},this)
 };
-VV = Vector;
+
 Vector.prototype = {
 	get: function (i) {
 		return this.el[i];

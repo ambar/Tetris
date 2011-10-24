@@ -16,7 +16,8 @@ function HSLColor(ary) {
 	if( ary.length < 3 || ary.some(isNaN) ) throw TypeError('Invalid color arguments')
 	
 	Object.defineProperty(this, 'el', {
-		value : ary, enumerable : false
+		writable : true,
+		value : ary
 	});
 
 	['h','s','l'].forEach(function (key, i) {

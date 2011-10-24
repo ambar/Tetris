@@ -25,7 +25,6 @@ var Brick = Entity.extend({
 
 		this.position = V([x,y])
 		this.shape = this.type.shape.slice();
-		// this.currentShape = 
 		this.parts = Brick.mapShape(this.position,this.shape);
 		
 		// 防止它出生就失重了 =_=
@@ -56,18 +55,6 @@ var Brick = Entity.extend({
 
 		// 与左右墙碰撞
 		if( !down && this.wall.edgeCollideWith(new_parts) ){
-			return false;
-		}
-
-		if( down ){
-			// 与已有砖块碰撞 or 与地面碰撞
-			if( this.wall.collideWith(new_parts) ){
-				this.emit('remove');
-				this.wall.add(this);
-				return false;
-			}
-		}else if( this.wall.edgeCollideWith(new_parts) ){
-			// 与左右墙碰撞
 			return false;
 		}
 
