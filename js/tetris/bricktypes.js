@@ -16,10 +16,18 @@ define(function(require, exports, module) {
 
 var HSLColor = require('./hslcolor');
 
+var id = function() {
+	var id = 1;
+	return function() {
+		return id++;
+	}
+}();
+
 // todo : 颜色应该与形状弱相关
 // var BrickType 
-module.exports = {
+var BrickType = module.exports = {
 	Z : {
+		id : id(),
 		color : new HSLColor(0,1,.47),
 		shape : [
 			[1,1,0],
@@ -27,6 +35,7 @@ module.exports = {
 		]
 	},
 	L : {
+		id : id(),
 		color : new HSLColor(40,1,.47),
 		shape : [
 			[1,1,1],
@@ -34,6 +43,7 @@ module.exports = {
 		]
 	},
 	O : {
+		id : id(),
 		color : new HSLColor(60,1,.47),
 		shape : [
 			[1,1],
@@ -41,6 +51,7 @@ module.exports = {
 		]
 	},
 	S : {
+		id : id(),
 		color : new HSLColor(120,1,.47),
 		shape : [
 			[0,1,1],
@@ -48,6 +59,7 @@ module.exports = {
 		]
 	},
 	I : {
+		id : id(),
 		color : new HSLColor(180,1,.47),
 		shape : [
 			[0,0,0,0],
@@ -56,6 +68,7 @@ module.exports = {
 		]
 	},
 	J : {
+		id : id(),
 		color : new HSLColor(240,1,.47),
 		shape : [
 			[1,1,1],
@@ -63,6 +76,7 @@ module.exports = {
 		]
 	},
 	T : {
+		id : id(),
 		color : new HSLColor(280,1,.47),
 		shape : [
 			[0,1,0],
@@ -70,6 +84,7 @@ module.exports = {
 		]
 	},
 	U : {
+		id : id(),
 		color : new HSLColor(320,1,.47),
 		shape : [
 			[1,0,1],
@@ -77,5 +92,7 @@ module.exports = {
 		]
 	},
 }
+
+T = BrickType;
 
 });

@@ -7,7 +7,7 @@
 * 明暗变化的颜色，用HSL比RGB方便太多了。
 * 画多边形时，斜线会有黑色的锯齿，可以再在上面画一条线段解决。
 * canvas 绘制文字消耗太大，尤其是firefox。一定要用的话，新建一个 canvas 层做背景，文字绘制到它上面，并用CSS定位把它到主画布下面。
-* 未开户硬件加速的情况下，仅仅绘制普通矩形，半屏之后也很卡。
+* 未开户硬件加速的情况下，仅仅绘制普通图形，半屏之后也很卡——解决办法，用 getImageData 缓存绘制过的图形。
 
 # [AMD](http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition)
 

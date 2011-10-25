@@ -5,18 +5,17 @@ var V         = require('../wo/vector');
 var HSLColor  = require('./hslcolor');
 var BrickType = require('./bricktypes');
 
-var default_color = new HSLColor(180,0,.47);
 /*
-* 绘制 wikipedia 经典砖块
-* @color hsl
+* 主题绘制器，内部
+* 格式 { name : drawer }
 */
 
+var default_color = new HSLColor(180,0,.47);
 var themeDrawers = {
 	// default drawer
 	classic : function(ctx,x,y,type) {
 		var unit = TetrisGame.unit;
-		var px = x * unit, py = y * unit;
-		var unit = TetrisGame.unit, side = unit*.15;
+		var px = x * unit, py = y * unit, side = unit*.15;
 
 		// todo: {Color} => {HSLColor}
 		var color    = type.color instanceof HSLColor ? type.color : default_color
@@ -125,9 +124,34 @@ var themeDrawers = {
 		ctx.restore();
 	}
 }
+
+/*
+* 代理方法，注入主题绘制器，拦截所有调用，检查缓存：
+* 有：使用缓存绘制单元格
+* 无：缓存绘制后的单元格
+*/
+var cachedData = {};
+Object.keys(themeDrawers).forEach(function(name) {
+	var _old = themeDrawers[name]; 
+	themeDrawers[name] = function(ctx,x,y,type) {
+		var unit  = TetrisGame.unit, cache_key = name+'.'+type.id;
+		var px    = x * unit, py = y * unit;
+
+		var cache = cachedData[cache_key];
+		if(cache){
+			ctx.putImageData(cache,px,py);
+		}else{
+			_old.apply(null,arguments);
+			cachedData[cache_key] = ctx.getImageData(px, py, unit, unit);
+		}
+	}
+});
+
+/*
+* 提供给外部的砖块绘制 API 
+*/
 // private
 var currentTheme = 'classic';
-
 var brickDrawer = Object.create({},{
 	themes : {
 		get : function() { return Object.keys(themeDrawers) }
