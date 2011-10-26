@@ -44,10 +44,10 @@ spm build game.js --combine
 // 显示网格线, 默认 true
 TetrisGame.showGrid = true;
 
-// 主题类型 ["classic", "window", "bubble"]
-TetrisGame.theme = 'classic';
+// 主题类型 ["classic", "window", "bubble"], 默认 classic
+// TetrisGame.theme = 'window';
 
 // canvas,列数，行数，缩放
-TetrisGame.game('#snake-game',10,20,1);
-// TetrisGame.game('#snake-game',10,20,.5);
+TetrisGame.init('#snake-game',10,20,1);
+// TetrisGame.init('#snake-game',10,20,.5);
 ```
