@@ -56,7 +56,10 @@ var rand_pos = function() {
 
 var gen_text = function(text) {
 	var txt = new GameText(stage.width/2,stage.height/2,text,unit*1.5);
-	txt.fontFamily = 'cursive, Comic Sans MS';
+	var panel = document.querySelector('#snake-game-wrapper .panel')
+	var fontFamily = document.defaultView.getComputedStyle(panel).getPropertyValue('font-family');
+	// 'cursive, Comic Sans MS';
+	txt.fontFamily = fontFamily;
 	return txt
 }
 

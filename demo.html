@@ -3,14 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Canvas游戏- 俄罗斯方块 复刻版</title>
+	<link href="http://fonts.googleapis.com/css?family=Sancreek" rel="stylesheet" type="text/css">
 	<style type="text/css">
 		body{
 			background-color: #f9f5ea;
 		}
+		@font-face { 
+			font-family: DotMatrixBold; 
+			src: url('media/dotmbold-webfont.woff') format("woff"); 
+		} 
 
 		#snake-game-wrapper{
-			margin:0 1em 0;padding:0 1em 0;overflow:hidden;
+			margin:0 auto;padding:0 1em 0;overflow:hidden;
 			font: 62.5% Monaco,Consolas;background-color: #f9f5ea;
+			width:600px;
 		}
 			#snake-game{
 				background-color:transparent;
@@ -20,13 +26,22 @@
 			}
 
 			#snake-game-wrapper *{margin: 0;padding: 0;}
-			#snake-game-wrapper .panel{
-				float:left;margin:.5em 1em;width:150px;
-				font-size:1.2em;color:#333;				
+
+			#snake-game-wrapper .panel .preview{min-height:100px;position: relative;}
+			#snake-game-wrapper .panel .preview p{margin:0}
+			#snake-game-wrapper .panel .preview canvas{
+				margin:auto 0;position: absolute;top:0;bottom:0;				
 			}
-				#snake-game-wrapper .panel p{margin:0 0 1em;}
+
+			#snake-game-wrapper .panel{
+				float:left;margin:0 0 0 10px;width:170px;
+				font:bold 2.6em Sancreek, DotMatrixBold;color:#333;
+			}
+				#snake-game-wrapper .panel p{margin:.5em 0;}
+				#snake-game-wrapper .panel p:first-child{margin:0;}
 				#snake-game-wrapper .panel li{padding:0;list-style:none;}
-				#snake-game-wrapper .panel em{font-weight:bold;}
+				#snake-game-wrapper .panel em{font-weight:bold;margin-right:10px;}
+				#snake-game-wrapper .panel .keys{font-size:.8em;}
 
 			#snake-game-wrapper .canvas{position: relative;float:left;}
 				#snake-game-wrapper .canvas canvas{position: absolute;top:0;left:0;}
@@ -46,21 +61,21 @@
 	</section>
 
 	<section class="panel">
+		<p>NEXT</p>
 		<div class="preview">
-			<p>下一个</p>
 			<canvas id="snake-game-next" width="500" height="500"></canvas>
 		</div>
-		<p><strong>方向键移动</strong></p>
-		<ul>
-			<li><em>P</em> 键 暂停/继续</li>
-			<li><em>R</em> 键 重新开始</li>
-			<li><em>D</em> 键 显示网格</li>
-			<li><em>C</em> 键 切换主题</li>
-			<li><del><em>A</em> 键 高级模式</del></li>
+		<p><strong>USE<br>ARROW<br>KEYS<br>TO<br>MOVE</strong></p>
+		<ul class="keys">
+			<li><em>P</em>PAUSE/RESUME</li>
+			<li><em>R</em>RESTART</li>
+			<li><em>D</em>SHOW GRID </li>
+			<li><em>C</em>NEXT THEME</li>
+			<li><del><em>A</em>ADV MODE</del></li>
 		</ul>
 		<br>
-		<p>得分	：<span id="tetris-score">0</span></p>
-		<p>level	：<span id="tetris-level">0</span></p>
+		<p>SCORE<br><span id="tetris-score">0</span></p>
+		<p>LEVEL<br><span id="tetris-level">0</span></p>
 		<!-- <p>fps	：<span id="tetris-fps">0</span></p> -->
 		
 	</section>
