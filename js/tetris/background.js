@@ -7,7 +7,7 @@ var inited = false, ctx = null;
 var draw_grid = function () {
 	ctx.beginPath();
 
-	ctx.lineWidth = .5;
+	ctx.lineWidth = .1;
 	ctx.strokeStyle = 'rgba(238,238,238,1)';
 
 	var text = function (text, x, y, color) {
