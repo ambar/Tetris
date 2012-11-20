@@ -60,7 +60,7 @@ var stage = {
 	,ticker : null
 	,init	: function (canvas,width,height,scale) {
 		var self = this;
-		this.canvas = typeof canvas === 'string' ? document.querySelector(canvas) : canvas;
+		canvas = this.canvas = typeof canvas === 'string' ? document.querySelector(canvas) : canvas;
 
 		if (!canvas) {
 			if (!canvas.getContext) {
