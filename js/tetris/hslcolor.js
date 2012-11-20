@@ -10,10 +10,9 @@ var wo    = require('../wo/wo');
 var Color = require('../wo/color').Color;
 
 function HSLColor(ary) {
-	
 	if( !Array.isArray(ary) ) ary = wo.makeArray(arguments);
 	
-	if( ary.length < 3 || ary.some(isNaN) ) throw TypeError('Invalid color arguments')
+	if( ary.length < 3 || ary.some(isNaN) ) throw new TypeError('Invalid color arguments')
 	
 	Object.defineProperty(this, 'el', {
 		writable : true,
@@ -28,7 +27,7 @@ function HSLColor(ary) {
 		})
 	},this);
 
-};
+}
 
 HSLColor.prototype = {
 	toString : function() {
@@ -49,18 +48,19 @@ HSLColor.prototype = {
 }
 
 function hsl_to_rgb(h,s,l) {
-    var m1,m2,r,g,b, h = h / 360;
+    var m1,m2,r,g,b;
+    h = h / 360;
 
     if(l <= .5) m2 = l * (s + 1);
     else m2 = l + s - l * s;
 
     m1 = l * 2 - m2
-    r = hue_to_rgb(m1, m2,h + 1/3);
-    g = hue_to_rgb(m1, m2,h );
-    b = hue_to_rgb(m1, m2,h - 1/3);
+    r = hue_to_rgb(m1, m2, h + 1/3);
+    g = hue_to_rgb(m1, m2, h );
+    b = hue_to_rgb(m1, m2, h - 1/3);
 
     return [r,g,b].map(function(n) {
-    	return Math.round(n*0xff)
+      return Math.round(n*0xff)
     });
 }
 

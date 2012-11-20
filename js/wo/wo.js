@@ -33,7 +33,7 @@ wo.throttle = function(delay,action,tail,debounce) {
 
         if(debounce){
             if(tail){
-                timer = setTimeout(exec,delay); 
+                timer = setTimeout(exec,delay);
             }else if(diff>=0){
                 exec();
             }

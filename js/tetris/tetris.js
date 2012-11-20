@@ -31,14 +31,14 @@ var unit = 40, // 网络单位长度，
 	scale        = 1, // 画布缩放比例
 	fps          = 12, // 初始帧数
 	fps_curr     = 12, //
-	lvl_curr     = 0, // 
-	lvl_up_score = 8000, // 
+	lvl_curr     = 0, //
+	lvl_up_score = 8000, //
 	score        = 0, //
 	arrow_keys   = [37,38,39,40], // 方向键，禁止默认卷屏
 	max_unit_x   = 0, // 横向最大单位
 	max_unit_y   = 0, // 纵向最大单位
 	game_lose    = false,
-	game_started = false, 
+	game_started = false,
 	show_grid    = true, // 显示网格
 	wall         = null, // 墙面地图
 	grid         = null, // 背景网格
@@ -64,7 +64,7 @@ var gen_text = function(text) {
 }
 
 var game_init = function (canvas,cols,rows,scale) {
-	w = unit * cols, h = unit * rows;
+	var w = unit * cols, h = unit * rows;
 	
 	stage.init(canvas,w,h,scale)
 
@@ -96,32 +96,27 @@ var game_init = function (canvas,cols,rows,scale) {
 			e.preventDefault();
 		}
 		switch( pressed(key) ){
-			case 'r' : {
+			case 'r' :
 				game_restart();
 				break;
-			}
-			case 'p' : {
+			case 'p' :
 				stage.running = !stage.running;
 				break;
-			}
-			case 'c' : {
+			case 'c' :
 				brickDrawer.randomizeTheme();
 				brickDrawer.drawPreview(Brick.instances.next);
 				if(game_lose){
 					stage.drawAll();
 				}
 				break;
-			}
-			case 'd' : {
+			case 'd' :
 				TetrisGame.showGrid = !TetrisGame.showGrid;
 				break;
-			}
 		}
 	},false);
 
 }
 
-// 
 var fib = function() {
 	var iter = function(n,a,b,idx) {
 		if(idx === ~~(n/2)) return n % 2 ? b : a;
@@ -132,8 +127,8 @@ var fib = function() {
 	}
 }();
 
- set_game_level = function(lvl) {	
- 	if(lvl < lvl_curr) return;
+var set_game_level = function(lvl) {
+	if(lvl < lvl_curr) return;
 	fps_curr = stage.fps = fps + (lvl-1) * 5;
 	$level.text(lvl_curr = lvl);
 }
@@ -182,7 +177,7 @@ var game_play = function() {
 	// brk = new Brick(6,7,BrickType.J);
 	// stage.add( brk )
 	// stage.add( new Brick(1,2,BrickType.O) )
-	// stage.add( new Brick(5,2,BrickType.S) )	
+	// stage.add( new Brick(5,2,BrickType.S) )
 
 	// stage.add( new Brick(1,7,BrickType.Z) )
 	// stage.add( new Brick(8,9,BrickType.L) )
@@ -196,20 +191,20 @@ var game_play = function() {
 
 var game_restart = function() {
 	stage.reset().run();
-	game_play();	
+	game_play();
 }
 var reset_state = function() {
 	$score.text(score = 0);
 	lvl_curr  = 0;
 	fps_curr  = stage.fps = fps;
 	game_lose = game_started = false;
-	Brick.resetInstances();	
+	Brick.resetInstances();
 }
 
 var TetrisGame = Object.create({},{
 	unit	: {
 		get : function() { return unit },
-		set : function(value) { return unit = value }
+		set : function(value) { unit = value }
 	},
 	score : {
 		get : function() { return score }
@@ -220,7 +215,8 @@ var TetrisGame = Object.create({},{
 	showGrid : {
 		get : function() { return show_grid },
 		set : function(value) {
-			if(!!value !== show_grid){
+			value = !!value
+			if(value !== show_grid){
 				show_grid = value;
 				show_grid ? bg.draw() : bg.clear();
 			}
@@ -265,6 +261,6 @@ TetrisGame.on('lose',function() {
 	setTimeout(stage.pause.bind(stage));
 })
 
-module.exports = host.TetrisGame = TetrisGame;;
+module.exports = host.TetrisGame = TetrisGame;
 
 });

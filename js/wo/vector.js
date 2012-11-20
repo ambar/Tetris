@@ -21,7 +21,7 @@ function Vector(ary) {
 			}
 		})
 	},this)
-};
+}
 
 Vector.prototype = {
 	get: function (i) {

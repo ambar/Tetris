@@ -14,7 +14,7 @@ var drawer = require('./brickdrawer');
 var TetrisWall = Entity.extend({
 	map   : [],
 	width : 0,
-	height: 0,	
+	height: 0,
 	init : function() {
 		this._super();
 
@@ -110,17 +110,17 @@ var TetrisWall = Entity.extend({
 	eraseRows : function() {
 		var rows = this.getFullRows(), len = rows.length;
 		if(len){
-			rows.forEach(this.eraseRow,this)
-			this.emit('eraseRows',len)			
+			rows.forEach(this.eraseRow, this)
+			this.emit('eraseRows', len)
 		}
 	},
 	getFullRows : function() {
 		return this.rows
-			.map(function(row,i){
-		    var full = row.every(function(e){
-		        return e !== 0;
-		    });
-		    return full && i
+			.map(function(row, i) {
+				var full = row.every(function(e) {
+					return e !== 0;
+				});
+				return full && i
 			})
 			.filter(Boolean)
 	}

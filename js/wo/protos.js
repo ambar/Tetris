@@ -12,14 +12,15 @@ define(function(require, exports, module) {
 	}
 
 	Number.prototype.times = function(action,scope){
-		var i = 0, n = this.valueOf(), scope = scope || this;
+		var i = 0, n = this.valueOf();
+		scope = scope || this;
 		n < 0 && (n=0);
 		while(i<n)
 			action.call(scope,i++);
 	};
 
 	Array.prototype.first = function(){
-	    return this[0];
+		return this[0];
 	}
 	
 	Array.prototype.last = function(){
@@ -27,7 +28,7 @@ define(function(require, exports, module) {
 	}
 	
 	Array.prototype.removeAt = function(idx,num) {
-		return this.splice(idx,num || 1);;
+		return this.splice(idx,num || 1);
 	}
 	
 	Array.prototype.remove = function(value,greedy) {

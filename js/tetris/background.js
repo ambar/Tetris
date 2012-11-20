@@ -51,6 +51,6 @@ exports.draw = function() {
 
 var clear = exports.clear = function() {
 	ctx.clearRect(0,0,stage.width,stage.height);
-} 
+}
 
 });

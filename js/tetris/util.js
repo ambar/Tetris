@@ -10,7 +10,8 @@ exports.array = {
 	orderBy : function(ary,fn) {
 		var f = typeof fn === 'function' ? fn : function(){ return this[fn] };
 		var comparator = function(a,b){
-			a = f.call(a,a), b = f.call(b,b);
+			a = f.call(a,a);
+			b = f.call(b,b);
 			return a > b ? 1 : a < b ? -1 : 0;
 		};
 		return ary.slice().sort(comparator);

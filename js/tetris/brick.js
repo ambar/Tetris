@@ -72,8 +72,7 @@ var Brick = Entity.extend({
 			return p.add(vector);
 		})
 	},
-	update : function() {		
-		
+	update : function() {
 		var direction;
 		// isKeyDown  isKeyPressed
 		if( input.isKeyDown('left') ){
@@ -107,7 +106,7 @@ var Brick = Entity.extend({
 	rotate : function() {
 		var new_shape = Brick.rotateShape(this.shape);
 		var new_parts = Brick.mapShape(this.position, new_shape )
-		// todo 靠墙变形 
+		// todo 靠墙变形
 		if( !this.wall.collideWith(new_parts) && !this.wall.edgeCollideWith(new_parts) ){
 			this.shape = new_shape;
 			this.parts = new_parts;
@@ -124,11 +123,11 @@ var Brick = Entity.extend({
 /*
 * 旋转一个形状(二维数组定义)
 * 默认顺时针旋转，第二个参数为 true 时直接转置它
-* @shape {array} 
-* @transpose {bool} 
+* @shape {array}
+* @transpose {boolean}
 */
-Brick.rotateShape = function(shape,transpose){ 
-	var ret = [], row, rows = shape.length, cols = shape[0].length, transpose = !!transpose;
+Brick.rotateShape = function(shape, transpose) {
+	var ret = [], row, rows = shape.length, cols = shape[0].length;
 	cols.times(function(y){
 		ret.push(row = [])
 		rows.times(function(x){
@@ -169,14 +168,14 @@ Brick.random = function() {
 
 /*
 * 生成一个游戏用的砖块
-* 当屏幕中还有活动的砖块时，返回 null 
+* 当屏幕中还有活动的砖块时，返回 null
 */
 Brick.spawn = function() {
 
 	if( Brick.instances.current ) return null;
 	if( !Brick.instances.next ){
 		Brick.instances.next = Brick.random()
-	};
+	}
 
 	var brk = Brick.instances.current = Brick.instances.next;
 

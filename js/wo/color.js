@@ -26,7 +26,7 @@ function Color(ary) {
 	},this);
 
 	this.a || (this.a = 1);
-};
+}
 
 Color.prototype = {
 	toString	: function() {
@@ -61,8 +61,8 @@ Color.parse	= function(args) {
 		var color = args.slice(1), startwith = args.slice(0,1)
 		hex = parseInt(color,16);
 		
-		if(startwith === '#'){
-		  ary = [2,1,0].map(color.length === 6 ? map_rrggbb : map_rgb);
+		if (startwith === '#') {
+			ary = [2,1,0].map(color.length === 6 ? map_rrggbb : map_rgb);
 		}
 	}
 	return new Color(ary);

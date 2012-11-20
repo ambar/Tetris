@@ -17,5 +17,5 @@ define(function(require, exports, module) {
 	// canvas,列数，行数，缩放
 	TetrisGame.init('#snake-game',10,20,1);
 	// TetrisGame.init('#snake-game',10,20,.5);
-	// TetrisGame.init('#snake-game',40,20,1);	
+	// TetrisGame.init('#snake-game',40,20,1);
 })

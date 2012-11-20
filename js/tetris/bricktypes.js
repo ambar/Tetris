@@ -3,8 +3,8 @@
 
 * ref : http://en.wikipedia.org/wiki/File:Tetrominoes_IJLO_STZ_Worlds.svg
 Z hsv(0,100%,94%)
-L hsv(40,100%,94%) 
-O hsv(60,100%,94%) 
+L hsv(40,100%,94%)
+O hsv(60,100%,94%)
 H hsv(120,100%,94%)
 J hsv(240,100%,94%)
 T hsv(280,100%,94%)
@@ -24,7 +24,6 @@ var id = function() {
 }();
 
 // todo : 颜色应该与形状弱相关
-// var BrickType 
 var BrickType = module.exports = {
 	Z : {
 		id : id(),
@@ -92,7 +91,5 @@ var BrickType = module.exports = {
 		]
 	},
 }
-
-T = BrickType;
 
 });

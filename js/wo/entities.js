@@ -11,7 +11,7 @@ var Entity = Class.extend({
 		this.vx = this.vy = 0;
 		this.alive = true;
 	},
-	update : function(delta) {		
+	update : function(delta) {	
 		this.x += this.vx;
 		this.y += this.vy;
 		this.emit('update',delta);
@@ -38,7 +38,7 @@ var Ball = Entity.extend({
 
 var GameText = Entity.extend({
 	
-	text        : '',	
+	text        : '',
 	textAlign   : 'center',
 	textBaseline: 'middle',
 	
@@ -60,7 +60,7 @@ var GameText = Entity.extend({
 			}).join(' ')
 		};
 
-		var font_values = this.fontDefaults.slice();		
+		var font_values = this.fontDefaults.slice();
 
 		this.fontKeys.forEach(function(key,i) {
 			Object.defineProperty(this,key,{
@@ -68,7 +68,7 @@ var GameText = Entity.extend({
 				get : function() { return font_values[i] },
 				set : function(value) {
 					if( key === 'fontSize' ){
-						value = parseInt(value);
+						value = parseInt(value, 10);
 						if( isNaN(value) || value < 0 ) return;
 					}
 					if( font_values[i] !== value ){

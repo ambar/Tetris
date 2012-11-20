@@ -35,8 +35,7 @@ var input = {
 	lock : function() {
 		var s = states;
 		Object.keys(s).forEach(function(k) {
-			if(s[k].pressed)
-				s[k].locked = true;
+			if (s[k].pressed) s[k].locked = true;
 		})
 	},
 	// 获取键值对应的字母
@@ -95,7 +94,7 @@ var keyMap = {
 	'lbracket'  :219,
 	'rbracket'  :221,
 	'apostrophe':222,
-	'backslash' :220,	
+	'backslash' :220,
 	
 	cmd       :91,
 	command   :91,
@@ -178,7 +177,7 @@ var keyMap = {
 	x         :88,
 	y         :89,
 	z         :90,
-	// 
+	//
 	0         :48,
 	1         :49,
 	2         :50,
@@ -214,11 +213,11 @@ host.addEventListener('keyup',function(e) {
 host.addEventListener('keydown',function(e) {
 	var state = states[e.keyCode];
 	// keydown 能够连续触发，需要保持锁定状态
-	if(state){
+	if (state) {
 		state.pressed = true;
-	}else{
+	} else {
 		states[e.keyCode] = { pressed : true };
-	}	
+	}
 },false);
 
 module.exports = input;

@@ -70,7 +70,7 @@ var themeDrawers = {
 
 		ctx.translate(-px,-py);
 	},
-	window : function(ctx,x,y,type) {
+	window : function(ctx, x, y, type) {
 		var unit = TetrisGame.unit;
 		var x = x * unit, y = y * unit;
 		var w = unit, h = unit, rad = unit/5;
@@ -103,7 +103,7 @@ var themeDrawers = {
 		(7).times(function(i) {
 			color.a = .5+i*.05;
 			radgrad.addColorStop(.93+i*.01, color);
-		})
+		});
 		
 		ctx.beginPath();
 		ctx.fillStyle = radgrad;
@@ -113,7 +113,7 @@ var themeDrawers = {
 		// 高亮，反光部位
 		var reflect_r = r/7;
 		ctx.fillStyle = 'rgba(255,255,255,.8)';
-		ctx.beginPath();		
+		ctx.beginPath();
 		ctx.translate(-r/2,-r/2);
 		ctx.rotate(-pi/4);
 		ctx.scale(1,1/2);
@@ -132,9 +132,9 @@ var themeDrawers = {
 */
 var cachedData = {};
 Object.keys(themeDrawers).forEach(function(name) {
-	var _old = themeDrawers[name]; 
-	themeDrawers[name] = function(ctx,x,y,type) {
-		var unit  = TetrisGame.unit, cache_key = name+'.'+type.id;
+	var _old = themeDrawers[name];
+	themeDrawers[name] = function(ctx, x, y, type) {
+		var unit  = TetrisGame.unit, cache_key = name + '.' + type.id;
 		var px    = x * unit, py = y * unit;
 
 		var cache = cachedData[cache_key];
@@ -148,7 +148,7 @@ Object.keys(themeDrawers).forEach(function(name) {
 });
 
 /*
-* 提供给外部的砖块绘制 API 
+* 提供给外部的砖块绘制 API
 */
 // private
 var currentTheme = 'classic';
@@ -170,7 +170,7 @@ var brickDrawer = Object.create({},{
 				return t !== this.currentTheme;
 			},this);
 			
-			this.currentTheme = themes[ rand(themes.length-1) ];			
+			this.currentTheme = themes[rand(themes.length-1)];
 		}
 	},
 	draw : {
@@ -188,16 +188,16 @@ var brickDrawer = Object.create({},{
 
 			var ctx = TetrisGame.nextContext, parts = brk.parts;
 
-			var translate = function(vec){
-			    return parts.map(function(p){
-			        return p.add(vec);
-			    });
+			var translate = function(vec) {
+				return parts.map(function(p){
+					return p.add(vec);
+				});
 			}
-			var min_by = function(ary,prop){
-			    return Math.min.apply(null, ary.map(function(p){ return p[prop]; }) )
+			var min_by = function(ary, prop) {
+				return Math.min.apply(null, ary.map(function(p){ return p[prop]; }) )
 			}
-			var max_by = function(ary,prop){
-			    return Math.max.apply(null, ary.map(function(p){ return p[prop]; }) )
+			var max_by = function(ary, prop) {
+				return Math.max.apply(null, ary.map(function(p){ return p[prop]; }) )
 			}
 			
 			var left_top = V([min_by(parts,'x'), min_by(parts,'y')]);

@@ -18,7 +18,7 @@ var time = {
 
 var new_ticker = function(fps,on_tick,canvas) {
 	if(typeof on_tick !== 'function'){
-		throw TypeError("The argument 'on_tick' must be a function")
+		throw new TypeError("The argument 'on_tick' must be a function")
 	}
 	fps || (fps = 60);
 	var ticker = {
@@ -56,14 +56,14 @@ var stage = {
 	,detached : []
 	,entities : []
 	,fpsNow : 0
-	,frameCount : 0	
+	,frameCount : 0
 	,ticker : null
 	,init	: function (canvas,width,height,scale) {
 		var self = this;
-		var canvas = this.canvas = typeof canvas === 'string' ? document.querySelector(canvas) : canvas;
+		this.canvas = typeof canvas === 'string' ? document.querySelector(canvas) : canvas;
 
-		if( !canvas ){
-			if( !canvas.getContext ){
+		if (!canvas) {
+			if (!canvas.getContext) {
 				throw new Error('CanvasRenderingContext2D is not supported.')	
 			}
 			throw new Error('No such canvas element.')
@@ -156,7 +156,7 @@ var stage = {
 		
 		if(!this.ticker.running){
 			this.ticker.start();
-			this.emit('run'); 
+			this.emit('run');
 			// 防止暂停后 deltaTime 变得极大
 			time.lastUpdate = now();
 		}
@@ -169,7 +169,7 @@ var stage = {
 	}
 	,pause	: function () {
 
-		if(this.ticker.running){			
+		if (this.ticker.running) {
 			this.ticker.stop();
 			this.emit('pause');
 			this.drawAll();
@@ -189,7 +189,7 @@ Object.extend(stage,EventEmitter);
 Object.defineProperties(stage,{
 	running : {
 		get: function() {
-			return this.ticker.running; 
+			return this.ticker.running;
 		},
 		set: function(value) {
 			Boolean(value) ? this.run() : this.pause();

@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 
-	module.exports = 
+	module.exports =
 		window.requestAnimationFrame       ||
 		window.webkitRequestAnimationFrame ||
 		window.mozRequestAnimationFrame    ||
